@@ -101,15 +101,20 @@ Ahora añadamos una dimesión adicional a nuestro arreglo y veamos que pasa, tom
 La pregunta obligada en este punto ¿Cuál es el límite para los hilos y bloques que puedo usar?
 
 Limitación para el tamaño del bloque:
-$$x <=1024$$
-$$y <=1024$$
-$$z <=644$$
-$$x \times y \times z <= 1024$$
+$x <=1024$
+
+$y <=1024$
+
+$z <=644$
+
+$x \times y \times z <= 1024$
 
 Limitaciones para el grid:
-$$x <=2^{32}-1$$
-$$y <=65536$$
-$$z <=65536$$
+$x <=2^{32}-1$
+
+$y <=65536$
+
+$z <=65536$
 
 ---
 **Example 2: Identificando thread -- threadIdx**
