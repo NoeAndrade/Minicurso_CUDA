@@ -4,8 +4,8 @@ Este curso contiene los principios básicos de CUDA así como algunos ejercicios
 
 Contenido.
 ---
-Semana 1: Intalación y motivación de CUDA
-Semana 2: Aspectos relevantes de computo, arquitectura e inicio de kernels en CUDA (ejemplos practicos de la inicializaciones de grids)
-Semana 3:
+-  Semana 1: Intalación y motivación de CUDA
+-  Semana 2: Aspectos relevantes de computo, arquitectura e inicio de kernels en CUDA (ejemplos practicos de la inicializaciones de grids)
+-  Semana 3:
 
 
