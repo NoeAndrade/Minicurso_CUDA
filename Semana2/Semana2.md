@@ -101,24 +101,47 @@ Ahora añadamos una dimesión adicional a nuestro arreglo y veamos que pasa, tom
 La pregunta obligada en este punto ¿Cuál es el límite para los hilos y bloques que puedo usar?
 
 Limitación para el tamaño del bloque:
-$x <=1024$
-
-$y <=1024$
-
-$z <=644$
-
-$x \times y \times z <= 1024$
+$$x <=1024$$
+$$y <=1024$$
+$$z <=644$$
+$$x \times y \times z <= 1024$$
 
 Limitaciones para el grid:
-$x <=2^{32}-1$
-
-$y <=65536$
-
-$z <=65536$
+$$x <=2^{32}-1$$
+$$y <=65536$$
+$$z <=65536$$
 
 ---
 **Example 2: Identificando thread -- threadIdx**
 
+threadIdx = es un identificador que contiene la localización de un hilo dentro de un thread block, en general es un arreglo de dimension 3 (dim3).
+
+Ejemplo de threadIdx en un grid de 1D en $x$.
+| threadIdx.x_i  | ABCD | EFGH|
+| -------------  |------|-----|
+| threadIdx.x    | 0123 | 0123|
+| threadIdx.y    | 0000 | 0000|
+| threadIdx.z    | 0000 | 0000|
+
+Ejemplo de threadIdx en un grid de 2D en $x$  y $y$.
+
+![alt text](image-3.png)
+
+
+| threadIdx.x_i  | PQRS | TUVX|
+| -------------  |------|-----|
+| threadIdx.x    | 0213 | 0203|
+| threadIdx.y    | 0000 | 0000|
+| threadIdx.z    | 0000 | 0000|
+
+Ejemplo 2 de threadIdx en un grid de 2D en $x$  y $y$.
+
+![alt text](image-4.png)
+| threadIdx.x_i  | XYPQ | RSTU|
+| -------------  |------|-----|
+| threadIdx.x    | 1102 | 0310|
+| threadIdx.y    | 0101 | 0101|
+| threadIdx.z    | 0000 | 0000|
 ---
 
 ### Ejercicio de tarea.
