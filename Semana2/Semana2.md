@@ -103,7 +103,7 @@ La pregunta obligada en este punto ¿Cuál es el límite para los hilos y bloque
 Limitación para el tamaño del bloque:
 $$x <=1024$$
 $$y <=1024$$
-$$z <=644$$
+$$z <=64$$
 $$x \times y \times z <= 1024$$
 
 Limitaciones para el grid:
