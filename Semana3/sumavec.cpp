@@ -1,6 +1,6 @@
 #include <iostream>
 #include <stdlib.h>
-#incluye <stdio.h>
+#include <stdio.h>
 void sumav(double *A,double *B,double *C,int tam)
 {
   int i;
