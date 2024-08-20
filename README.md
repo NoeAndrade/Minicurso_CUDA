@@ -8,6 +8,7 @@ Contenido.
 ---
 -  Semana 1: Intalación y motivación de CUDA
 -  Semana 2: Aspectos relevantes de computo, arquitectura e inicio de kernels en CUDA (ejemplos practicos de la inicializaciones de grids)
--  Semana 3: Manejo de memoria y aplicaciones de cuda como la suma de vectores 
+-  Semana 3: Manejo de memoria y aplicaciones de cuda como la suma de vectores
+-  Semana 4: Repaso de manejo de arrays, memoria, ejercicio e inicio con Velocity Verlet
 
 
