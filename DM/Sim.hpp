@@ -63,7 +63,7 @@ void PLJ(double &eit,double *a,double *p,uint np,ush nd,double cajax,double caja
             a[nd*ip+1]+=fue*dy;
             a[nd*ip+2]+=fue*dz;            
         }
-        printf("ip: %d,eit: %f\n",ip,eitt);
+        //printf("ip: %d,eit: %f\n",ip,eitt);
         //std::cout << "ax["<<ip<< "]: "<< a[nd*ip] << std::endl;
     }
     eit/=2.0*np;
@@ -131,7 +131,7 @@ void Simulacion(uint np, uint nd,double *p,double *v,double *a,double cajax,doub
 
     std::cout << "ett,ect,eit,temp " << ett << " " << ect << " " <<
             eit << " " << temp << std::endl;
-    /*
+    
     ti=clock();
     std::cout << " " << std::endl;
     std::cout << "Resultados parciales" << std::endl;
@@ -208,6 +208,6 @@ void Simulacion(uint np, uint nd,double *p,double *v,double *a,double cajax,doub
     ofasres << nc << " " << temp << " " << dens << " " << etp << " " << ecp << " " << eip << " " << dtt << std::endl;
 
     IAaD(np,ofasat,p,v,a,nd);
-    */
+    
 }
 #endif
