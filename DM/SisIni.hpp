@@ -104,6 +104,9 @@ void Cuadrada(ush nd,double &cajax,double &cajay,double &cajaz,double sig,
     ndiv2=pow(prod,1.0/(nd-1))+0.5;
     ndivy=ndiv2;
     ndivz=np/(ndivx*ndivy);
+    if(np%prod!=0){
+        ndivz++;
+    }
     cajax = ndivx*celx;
     cajay = ndivy*cely;
     cajaz = ndivz*celz;
