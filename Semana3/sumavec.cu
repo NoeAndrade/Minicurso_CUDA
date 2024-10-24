@@ -55,10 +55,19 @@ int main()
     
     Errorcuda(cudaMemcpy(h_C, d_C, size, cudaMemcpyDeviceToHost),2,"d_C");
     //Las operaciones de cudaMemcpy sincronizan el device por lo que no es necesario usar cudadeviceSynchronize()
-  
+    
+    Errorcuda(cudaFree(d_A),4,"d_A");
+    Errorcuda(cudaFree(d_B),4,"d_B");
+    Errorcuda(cudaFree(d_C),4,"d_C");
+    
     for (int i = 0; i < N; ++i) {
       fprintf(stderr, "h_A[%d]: %f, h_B[%d]: %f, h_C[%d]: %f\n", i,h_A[i], i,h_B[i], i,h_C[i]);
     }
+
+    delete[] h_A;
+    delete[] h_B;
+    delete[] h_C;  
+
     return 0;
 
 }
