@@ -1,14 +1,15 @@
 #include <stdio.h>
 
 #include <cuda_runtime.h>
-
-__global__ void vectorSuma(double *A, double *B, double *C,
-                          int numElements) {
+#include "cuda_Error.cuh"
+__global__ void vectorSuma(double *A, double *B, double *C, int numElements) //Definiendo el Kernel
+{
   int i = blockDim.x * blockIdx.x + threadIdx.x;
 
   if (i >= numElements)return; //Los hilos que no son menores que numElements no realizan los siguientes calculos
 
   C[i] = A[i] + B[i];
+}
 
 
 int main()
