@@ -1,48 +1,88 @@
 # Clase 31 de Julio 2024
 ## Motivacion para dinamica molecular
 Codigo MD
-``````
+``````C
 int main()
 {
   DeclaraciondeSistemaInicial();
   Simulacion();
 }
 ``````
-La mayorìa del tiempo de la corrida es en la función simulación
-Dentro de la funcion de simulación (caso NVE,algoritmo Velocity Verlet)
-Siendo N el número de particulas
-``````
-Simulacion
-{
-  CalculosEnergiaInicial();
-  Aceleraciones();
-  iterador
-  {
-    Posiciones(); <- O(N)
-    Velocidades(); <- O(N)
-    Aceleraciones();<- O(N²)
-    Velocidades();
-  }
-}
-``````
-Aceleraciones es la función que peor escala
-con el número de partículas
+Ejemplo de rutina de simulación para algoritmo de Velocity Verlet (NVE)
 
-Estructura de Aceleraciones()
-``````
-Aceleraciones();
+*Notacion:*
+
+Iterador(i,j,k){proceso(k)} <- *se realiza el proceso(k) j-i veces, donde k va de i a j*
+
+Iterador(j,k){proceso(k)} <- *lo mismo que arriba pero con i=0*
+
+Iterador(j){proceso()} <- *proceso() no depende de el valor del iterador*
+``````C
+void Simulacion()
 {
-  IteradorParticula1
+  CalculoDePropiedadesMacroscópicas();
+  Aceleraciones();
+  Iterador(np) //np es el numero de pasos de simulacion
   {
-    IteradorParticula2
+    Posiciones();
+    Velocidades();
+    Aceleraciones();
+    Velocidades();
+    Iterador(np/porc)  //este iterador indica cada cuantos pasos de simulacion se calculan las propiedades macroscopicas
     {
-      //Se puede Incluir el calculo de las contribuciones a la EP
-      CalculodeFuerza();
-      SumaFuerzasenP1();
+      CalculoDePropiedadesMacroscópicas();
     }
   }
 }
 ``````
+### ¿Como escala el tiempo de ejecución de las funciones?
+
+N <- número de partículas
+
+dt <- tamaño del paso de integración
+``````C
+void Posiciones()
+{
+  Iterador(N,k)  //iterando sobre todas las particulas
+  { 
+    Iterador(nd,l)  //si nd=2 no se calcula la posicion en z, todas las particulas estan el plano z=0
+    { 
+      posicion[k][l]=posicion[k][l]+velocidad[k][l]*dt+aceleracion[k][l]*dt*dt*0.5;
+    }
+  }
+//Orden del tiempo de ejecución O(N)
+
+void Velocidades()
+{
+  Iterador(N,k){ //iterando sobre todas las particulas
+    Iterador(nd,l){ //si nd=2 no se calcula la posicion en z, todas las particulas estan el plano z=0
+      velocidad[k][l]=velocidad[k][l]+aceleracion[k][l]*dt;
+    }
+  }
+//Orden del tiempo de ejecución O(N)
+``````
+
+El calculo de las aceleraciones depende de los potenciales de interaccion entre partículas.
+
+Caso de interaccion por pares:
+``````C
+Aceleraciones()
+{
+  Iterador(N,i)
+  {
+    Iterador(N,j)
+    {
+      ConsiderarExclusiones(i,j); //No se calcula autointeraccion i==j
+      CalculodeFuerza(i,j);
+      //En caso de que la fuerza sea derivable de la energía potencial se puede realizar el calculo en la misma funcion
+    }
+    SumaFuerza_i(j); //se suman las contribuciones de las fuerzas de cada particula j a i
+  }
+}
+//Orden del tiempo de ejecución O(N²)
+``````
+La rutina de aceleraciones tiene el peor escalamiento en terminos de ejecucion, N veces mas que las demas rutinas
+
 ### Propuesta de paralelización:
 Seccionar función de aceleración y distribuirla en la GPU O(N²)->O(N)
 ## Instalacion de CUDA
