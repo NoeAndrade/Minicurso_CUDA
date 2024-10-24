@@ -6,24 +6,28 @@ __global__ void vectorSuma(double *A, double *B, double *C,
                           int numElements) {
   int i = blockDim.x * blockIdx.x + threadIdx.x;
 
-  if (i < numElements) {
-    C[i] = A[i] + B[i];
-  }
-}
+  if (i >= numElements)return; //Los hilos que no son menores que numElements no realizan los siguientes calculos
+
+  C[i] = A[i] + B[i];
 
 
 int main()
 {
-    cudaError_t err = cudaSuccess;
-    double *h_A,*h_B,*h_C,*d_A,*d_B,*d_C;
-    int N=100;
+    cudaError_t err = cudaSuccess; //Nos indica si hay errores por parte de las APIs de CUDA
+
+    double *h_A,*h_B,*h_C,*d_A,*d_B,*d_C; //arreglos
+
+    int N=100; //numero de elementos que contiene el arreglo
+
     h_A=new double[N];
     h_B=new double[N];
     h_C=new double[N];
-    int size=sizeof(double)*N;
 
+    size_t size=sizeof(double)*N; //numero de bytes que requiero para los arreglos
+
+    //comprobando que la asignación de memoria de los arreglos en el Host fue exitosa
     if (h_A == NULL || h_B == NULL || h_C == NULL) {
-        fprintf(stderr, "Failed to allocate host vectors!\n");
+        fprintf(stderr, "No se pudo asignar memoria para los vectores en el host !\n");
         exit(EXIT_FAILURE);
     }
 
