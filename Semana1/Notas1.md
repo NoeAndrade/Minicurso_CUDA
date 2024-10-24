@@ -1,5 +1,5 @@
 # Clase 31 de Julio 2024
-_En esta semana se comentara la motivación para este curso, se darán nociones del computo en paralelo y de CUDA_
+_En esta semana se comentara la motivación para este curso, se darán nociones del computo en paralelo y de CUDA._
 ## Motivacion para dinamica molecular
 Codigo MD
 ``````C
