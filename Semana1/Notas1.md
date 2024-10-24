@@ -81,10 +81,28 @@ Aceleraciones()
 }
 //Orden del tiempo de ejecución O(N²)
 ``````
-La rutina de aceleraciones tiene el peor escalamiento en terminos de ejecucion, N veces mas que las demas rutinas
+La rutina de aceleraciones tiene el peor escalamiento en terminos de ejecucion, ¡N veces mas que las demas rutinas!.
+
+*La rutina de aceleraciones puede ocupar hasta el 90% del tiempo de simulación*
+
+
+### ¿Como reducir el tiempo de ejecución? ¡Computo en paralelo!
+
+#### ¿Que es computo en paralelo?
+
+Acción de dividir un proceso grande en diferentes subprocesos, que se pueden realizar al mismo tiempo y se pueden comunicar mediante una memoria compartida. 
+
+#### ¿Que es CUDA?
+Modelo de programación y plataforma de computo en paralelo de uso general.
+
+Permite acceso a GPUs de NVIDIA. 
+
+La rutina de aceleraciones es un proceso suficientemente simple que se presta mejor para la paralelizacion en GPU. 
+
+
 
 ### Propuesta de paralelización:
-Seccionar función de aceleración y distribuirla en la GPU O(N²)->O(N)
+Seccionar función de aceleración y distribuirla en la GPU buscando O(N²)->O(N)
 ## Instalacion de CUDA
 * Guia de instalacion de cuda toolkit
   https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html
