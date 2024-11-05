@@ -17,6 +17,7 @@ $$S(p)=\frac{1}{1-p}$$
 
 En resumen:
 > La mejora del rendimiento del programa, debida a la optimización de una fracción de este, está limitado a al tiempo durante el cual la parte que no es paralelizable es ejecutada.
+> [Wilkinson][1]
 
 Ejemplo:
 
@@ -37,3 +38,5 @@ $$ \frac{20-1}{20}*100\\% =95\\% $$
 
 ### Problema:
 Problemas no realistas. Comunicación requerida entre computadoras, los subproblemas no son iguales entre si por lo que hay momentos donde procesadores siguen trabajando mientras otros se mantienen inactivos, lo cual tiene que ser considarado en el calculo del _speedup_, esto se toma en cuenta en la _ley de Gunther_ o _Ley universal de escalamiento_.
+
+[1]: https://doi.org/10.1108/k.2006.06735aae.001
